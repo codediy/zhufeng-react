@@ -57,6 +57,7 @@ function completeUnitOfWork(currentFiber){ // 第一个完成的A1TEXT
             }
             returnFiber.lastEffect = currentFiber.lastEffect;
         }
+        
         // 2. 把自己挂到父亲身上
         const effectTag = currentFiber.effectTag;
         if(effectTag){// 自己有副作用
