@@ -1,17 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from './react';
+import ReactDOM from './react-dom';
+
+let style = {
+    border: '3px solid red',
+    margin: '5px'
+};
+// let element = (
+//     <div id="A1" style={style}>
+//         A1TEXT
+//         <div id="B1" style={style}>
+//             B1TEXT
+//             <div id="C1" style={style}>C1TEXT</div>
+//             <div id="C2" style={style}>C2TEXT</div>
+//         </div>
+//         <div id="B2" style={style}>
+//             B2TEXT
+//         </div>
+//     </div>
+// )
+
+
+
+let element = React.createElement("div", {
+    id: "A1",
+    style: style
+}, "A1TEXT",React.createElement("div", {
+    id: "B1",
+    style: style
+}, "B1TEXT", React.createElement("div", {
+    id: "C1",
+    style: style
+}, "C1TEXT"),React.createElement("div", {
+    id: "C2",
+    style: style
+}, "C2TEXT")), React.createElement("div", {
+    id: "B2",
+    style: style
+}, "B2TEXT"));
+
+console.log(element);
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    element,
+    document.getElementById('root')
+)
