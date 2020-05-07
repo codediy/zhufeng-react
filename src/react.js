@@ -1,4 +1,6 @@
 import { ELEMENT_TEXT } from "./constant";
+import { UpdateQueue, Update} from './UpdateQueue';
+import { scheduleRoot } from "./schedule";
 
 /**
  * 创建元素（虚拟DOM）
@@ -26,9 +28,25 @@ function createElement(type,config, ...children){
         }
     }
 }
+class Component {
+    constructor(props){
+        this.props = props;
+        this.updateQueue = new UpdateQueue();
+    }
+    setState(payload){ //可能是对象，也可能是一个函数
+        let update = new Update(payload);
+        // updateQueue其实是放在此类组件对应的fiber节点的internalFiber;
+        this.internalFiber.updateQueue.enqueueUpdate(update);
+        // this.updateQueue.enqueueUpdate(update);
+        scheduleRoot(); // 从根节点开始调度；
+    }
+}
+Component.prototype.isReactComponent = {}; // 类组件
+
 
 const React = {
-    createElement
+    createElement,
+    Component
 }
 
 export default React;

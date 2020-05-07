@@ -7,6 +7,8 @@ export const TAG_HOST = Symbol.for('TAG_HOST');
 
 export const TAG_TEXT = Symbol.for('TAG_TEXT');
 
+export const TAG_CLASS = Symbol.for('TAG_CLASS');
+
 export const PLACEMENT = Symbol.for('PLACEMENT');
 
 export const UPDATE = Symbol.for('UPDATE');
