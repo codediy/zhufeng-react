@@ -58,9 +58,9 @@ render2.addEventListener('click', () => {
                 <div id="C1-new" style={style}>C1TEXT-new</div>
                 <div id="C2-new" style={style}>C2TEXT-new</div>
             </div>
-            <div id="B2-new" style={style}>
+            <p id="B2-new" style={style}>
                 B2TEXT-new
-            </div>
+            </p>
             <div id="B3" style={style}> B3</div>
         </div>
     )
@@ -82,9 +82,9 @@ render3.addEventListener('click', () => {
                 <div id="C1-new2" style={style}>C1TEXT-new2</div>
                 <div id="C2-new2" style={style}>C2TEXT-new2</div>
             </div>
-            <div id="B2-new2" style={style}>
+            <p id="B2-new2" style={style}>
                 B2TEXT-new2
-            </div>
+            </p>
         </div>
     )
     ReactDOM.render(
