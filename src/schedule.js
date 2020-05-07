@@ -305,6 +305,10 @@ function commitWork(currentFiber) {
     let returnDOM = returnFiber.stateNode;
     if (currentFiber.effectTag === PLACEMENT) { // 新增节点
         let nextFiber = currentFiber;
+        // 优化： 如果是类组件，其实可以直接return
+        if(nextFiber.tag === TAG_CLASS){ 
+            return;
+        }
         // 如果要挂载的节点不是DOM节点，比如说是类组件Fiber，一直找第一个儿子，直到找到一个真实DOM节点为止。
         while (
             nextFiber.tag !== TAG_HOST &&
