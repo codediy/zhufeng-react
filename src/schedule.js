@@ -382,7 +382,6 @@ export function useReducer(reducer, initialValue) {
     }
     // const dispatch = null;
     const dispatch = action => { // {type: 'ADD'}
-        debugger;
         let payload = reducer ? reducer(newHook.state, action) : action;
         console.log(action);
         
