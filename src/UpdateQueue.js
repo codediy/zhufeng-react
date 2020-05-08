@@ -24,6 +24,7 @@ export class UpdateQueue {
         let currentUpdate = this.firstUpdate;
         // TODO: 
         while(currentUpdate){
+            console.log(currentUpdate,'~~~~')
             let nextState = typeof currentUpdate.payload === 'function' ? currentUpdate.payload(state) : currentUpdate.payload;
             state = {...state, ...nextState};
             currentUpdate = currentUpdate.nextUpdate;
