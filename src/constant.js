@@ -9,6 +9,9 @@ export const TAG_TEXT = Symbol.for('TAG_TEXT');
 
 export const TAG_CLASS = Symbol.for('TAG_CLASS');
 
+// 函数组件
+export const TAG_FUNCTION_COMPONENT = Symbol.for('TAG_FUNCTION_COMPONENT');
+
 export const PLACEMENT = Symbol.for('PLACEMENT');
 
 export const UPDATE = Symbol.for('UPDATE');

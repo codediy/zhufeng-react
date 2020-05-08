@@ -1,4 +1,4 @@
-import { TAG_ROOT, TAG_TEXT, TAG_HOST, ELEMENT_TEXT, PLACEMENT, DELETION, UPDATE, TAG_CLASS } from "./constant";
+import { TAG_ROOT, TAG_TEXT, TAG_HOST, ELEMENT_TEXT, PLACEMENT, DELETION, UPDATE, TAG_CLASS, TAG_FUNCTION_COMPONENT } from "./constant";
 import { setProps } from './utils';
 import { UpdateQueue } from "./UpdateQueue";
 
@@ -109,6 +109,8 @@ function beginWork(currentFiber) {
         updateHost(currentFiber);
     } else if (currentFiber.tag === TAG_CLASS) { // 类组件
         updateClassComponent(currentFiber);
+    } else if(currentFiber.tag === TAG_FUNCTION_COMPONENT){
+        updateFunctionComponent(currentFiber);
     }
 }
 
@@ -148,6 +150,11 @@ function updateClassComponent(currentFiber) {
     currentFiber.stateNode.state = currentFiber.updateQueue.forceUpdate(currentFiber.stateNode.state);
     let newElement = currentFiber.stateNode.render();
     const newChildren = [newElement];
+    reconcileChildren(currentFiber, newChildren);
+}
+
+function updateFunctionComponent(currentFiber){
+    const newChildren = [currentFiber.type(currentFiber.props)]
     reconcileChildren(currentFiber, newChildren);
 }
 
@@ -192,6 +199,8 @@ function reconcileChildren(currentFiber, newChildren) {
             tag = TAG_HOST;
         } else if (newChild && typeof newChild.type === 'function' && newChild.type.prototype.isReactComponent) {
             tag = TAG_CLASS;
+        } else if (newChild && typeof newChild.type === 'function') {
+            tag = TAG_FUNCTION_COMPONENT;
         }
         if (sameType) { // 说明老fiber和新虚拟DOM类型是一样的， 可以直接复用老的DOM节点，更新即可。
 
