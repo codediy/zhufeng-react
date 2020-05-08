@@ -20,6 +20,7 @@ export function setProps(dom, oldProps, newProps){
 
 function setProp(dom, key, value){
     if(/^on/.test(key)){
+        
         dom[key.toLowerCase()] = value;
     } else if(key === 'style'){
         if(value){

@@ -26,9 +26,6 @@ const ADD = 'ADD';
 function FunctionCounter() {
     const [countState, dispatch] = React.useReducer(reducer, { count: 0});
     const [numberState, setNumberState] = React.useState({number:0});
-    console.log(numberState.number + 1)
-    let newState = numberState.number + 1;
-    console.log('newState', newState);
     
     return (
         <div>
@@ -38,7 +35,7 @@ function FunctionCounter() {
             </div>
             <div id="counter2">
                 <span>{numberState.number}</span>
-                <button onClick={() => setNumberState({ number: newState})}> 加1</button>
+                <button onClick={() => setNumberState({ number: numberState.number + 1 })}> 加1</button>
             </div>
         </div>
     )

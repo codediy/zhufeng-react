@@ -383,7 +383,6 @@ export function useReducer(reducer, initialValue) {
     // const dispatch = null;
     const dispatch = action => { // {type: 'ADD'}
         let payload = reducer ? reducer(newHook.state, action) : action;
-        console.log(action);
         
         newHook.updateQueue.enqueueUpdate(
             new Update(payload)
